@@ -1,0 +1,73 @@
+input {
+    width: 290px;
+    height: 40px;
+    font-size: 1rem;
+    outline: none;
+    border: none;
+}
+
+input[type="text"],
+input[type="password"] {
+    border-bottom: 1px solid $main-hover;
+    padding: 0 10px 0 38px;
+    margin-bottom: 10px;
+    position: relative;
+    background-color: lavender;
+}
+
+input[type="checkbox"] {
+    height: 1.1rem;
+    width: 1.1rem;
+}
+
+input[type="submit"] {
+    width: 260px;
+    height: 40px;
+    border-radius: 32px;
+    background-color: $main;
+    color: $white;
+
+    height: 3rem;
+    margin: 30px;
+
+    transition: all .3s;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $main-hover;
+    }
+
+    &:active {
+        background-color: $main-active;
+    }
+}
+
+label {
+    font-size: 0.9rem;
+}
+
+.control  {
+    margin: 7px;
+    position: relative;
+
+    i {
+        font-size: 20px;
+        position: absolute;
+        left: 0px;
+        bottom: 10px;
+        padding: 10px;
+        border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px;
+    } 
+}
+
+.check-control {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+
+    label {
+        font-size: 1rem;
+        margin-left: 10px;
+    }
+}
