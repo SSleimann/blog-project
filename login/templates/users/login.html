@@ -28,6 +28,7 @@
                 <label for="username"> Usuario </label>
                 {{ form.username }}
                 <i class="la la-user"></i>
+                
             </div>
 
             <div class="control">
@@ -37,15 +38,18 @@
             </div>
 
             <div class="check-control">
-                <input type="checkbox" name="remember-me" id="remember">
+                {{form.remember_me}}
                 <label for="remember-me"> Recuérdame </label>
             </div>
-            
+
             <input type="submit" name="submit">
 
             <a href="#"> Recuperar acceso </a>
 
+            <div class="errors">{{ form.non_field_errors }}</div>
+
         </form>
+
     </div>
 </body>
 </html>

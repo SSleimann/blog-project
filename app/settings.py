@@ -101,6 +101,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+#cookies
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 1209600
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
