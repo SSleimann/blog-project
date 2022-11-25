@@ -1,0 +1,29 @@
+.container {
+    width: 60vw;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    div.flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+form {
+    width: 100%;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(3, 70px);
+    row-gap: 15px;
+    column-gap: 10px;
+
+    input {
+        display: block;
+        width: 100%;
+    }
+}

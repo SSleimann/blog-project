@@ -32,8 +32,7 @@ class SingUpForm(UserCreationForm):
     
     class Meta:
         model = User
-        fields = ["username", "first_name", "last_name", "email", "password1", "password2"]
-
+        fields = ["first_name", "last_name", "username", "email", "password1", "password2"]
 
     def save(self, commit=True):
         user = super(SingUpForm, self).save(commit=False)

@@ -4,15 +4,26 @@ input {
     font-size: 1rem;
     outline: none;
     border: none;
+
+    &:focus {
+        box-shadow: 0 0 0 3px rgba(21, 156, 228, 0.4);
+    }
 }
 
 input[type="text"],
-input[type="password"] {
-    border-bottom: 1px solid $main-hover;
-    padding: 0 10px 0 38px;
-    margin-bottom: 10px;
+input[type="password"],
+input[type="email"] {
+    border-bottom: 2px solid rgba(21, 156, 228, 0.4);
+    padding: 0 10px 0 40px;
+    background-color: rgb(235, 235, 255);
+    transition: all .3s;
+    margin-bottom: 8px;
     position: relative;
-    background-color: lavender;
+
+    &:focus {
+        border: none;
+        box-shadow: 0 0 0 3px rgba(21, 156, 228, 0.4);
+    }
 }
 
 input[type="checkbox"] {
@@ -20,16 +31,20 @@ input[type="checkbox"] {
     width: 1.1rem;
 }
 
-input[type="submit"] {
+input[type="submit"],
+.buttonSubmit {
     width: 260px;
     height: 40px;
     border-radius: 32px;
     background-color: $main;
+    outline: none;
+    border: none;
     color: $white;
 
     height: 3rem;
     margin: 30px;
 
+    font-size: 1.1rem;
     transition: all .3s;
     cursor: pointer;
 
@@ -47,7 +62,6 @@ label {
 }
 
 .control  {
-    margin: 7px;
     position: relative;
 
     i {
@@ -56,8 +70,6 @@ label {
         left: 0px;
         bottom: 10px;
         padding: 10px;
-        border-bottom-left-radius: 4px;
-        border-top-left-radius: 4px;
     } 
 }
 

@@ -1,55 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+{% extends 'users/base/base.html' %}
+
+{% block title %} Login {% endblock title %}
+
+{% block css %}
 
     {% load static %}
 
-    <!-- Icons CSS -->
-    <link rel="stylesheet" href="{% static 'icons/css/line-awesome.min.css' %}">
-
     <!-- Personal CSS -->
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
-</head>
-<body>
-    <div class="container">
-        <h1> <span class="text-focus">BloG</span> </h1>
-        <h1> Login to your account </h1>
 
-        <form method="POST">{% csrf_token %}
+{% endblock css %}
+
+{% block form-content %}
+
+    <h1> Bienvenido de nuevo </h1>
+
+    <form method="POST">{% csrf_token %}
         
-            <!-- form variable     
-            {{ form.as_div }} -->
+        <!-- form variable     
+        {{ form.as_div }} -->
 
-            <div class="control">
-                <label for="username"> Usuario </label>
-                {{ form.username }}
-                <i class="la la-user"></i>
-                
-            </div>
+        <div class="control">
+            <label for="username"> Usuario </label>
+            {{ form.username }}
+            <i class="la la-user"></i>            
+        </div>
 
-            <div class="control">
-                <label for="password"> Contraseña </label>
-                {{ form.password }}
-                <i class="la la-lock"></i>
-            </div>
+        <div class="control">
+            <label for="password"> Contraseña </label>
+            {{ form.password }}
+            <i class="la la-lock"></i>
+        </div>
 
-            <div class="check-control">
-                {{form.remember_me}}
-                <label for="remember-me"> Recuérdame </label>
-            </div>
+        <div class="check-control">
+            {{ form.remember_me }}
+            <label for="remember-me"> Recuérdame </label>
+        </div>
 
-            <input type="submit" name="submit">
+        <button class="buttonSubmit submit"> Ingresar </button>
 
-            <a href="#"> Recuperar acceso </a>
+        <a href="#"> Recuperar acceso </a>
 
-            <div class="errors">{{ form.non_field_errors }}</div>
+        <a href="/register"> Registrarse </a>
 
-        </form>
+        <div class="errors">{{ form.non_field_errors }}</div>
 
-    </div>
-</body>
-</html>
+    </form>
+
+{% endblock form-content %}

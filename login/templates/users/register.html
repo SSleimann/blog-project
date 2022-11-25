@@ -1,25 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>register</title>
-</head>
-<body>
+{% extends 'users/base/base.html' %}
+
+{% block title %} Register {% endblock title %}
+
+{% block css %}
+
+    {% load static %}
+
+    <!-- Personal CSS -->
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+
+{% endblock css %}
+
+{% block form-content %}
+
+    <h1> Registrarse </h1>
+
     <form method="POST"> {% csrf_token %}
 
         {{ form.non_field_errors }}
         
-        {% for field in form %}
-            <p>
-            {{ field.errors }}
-            {{ field.label }}
-            {{ field }}
-            </p>
-        {% endfor %}
+        <!-- FORMS -->
+        <div class="control">
+            {{ form.first_name.errors }}
+            {{ form.first_name.label }}
+            {{ form.first_name }}
+            <i class="la la-user"></i>
+        </div>
 
-        <button type="submit">subir</button>
+        <div class="control">
+            {{ form.last_name.errors }}
+            {{ form.last_name.label }}
+            {{ form.last_name }}
+            <i class="la la-id-card"></i>
+        </div>
+
+        <div class="control">
+            {{ form.username.errors }}
+            {{ form.username.label }}
+            {{ form.username }}
+            <i class="la la-user-circle"></i>
+        </div>
+
+        <div class="control">
+            {{ form.email.errors }}
+            {{ form.email.label }}
+            {{ form.email }}
+            <i class="la la-at"></i>
+        </div>
+
+        <div class="control">
+            {{ form.password1.errors }}
+            {{ form.password1.label }}
+            {{ form.password1 }}
+            <i class="la la-lock"></i>
+        </div>
+
+        <div class="control">
+            {{ form.password2.errors }}
+            {{ form.password2.label }}
+            {{ form.password2 }}
+            <i class="la la-eye"></i>
+        </div>
+        <!-- END FORMS -->
+
+        <div class="cols-2 flex">
+            <button class="buttonSubmit submit" type="submit"> Registrar </button>
+            <a href="/login"> Iniciar Sesión </a>
+        </div>
+
     </form>
-</body>
-</html>
+
+{% endblock form-content %}
