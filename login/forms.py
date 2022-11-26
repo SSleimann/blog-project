@@ -32,7 +32,17 @@ class SingUpForm(UserCreationForm):
     
     class Meta:
         model = User
+<<<<<<< HEAD
         fields = ["first_name", "last_name", "username", "email", "password1", "password2"]
+=======
+        fields = ["username", "first_name", "last_name", "email", "password1", "password2"]
+
+    def clean_email(self):
+        data = self.cleaned_data['email']
+        if User.objects.filter(email=data).exists():
+            raise forms.ValidationError("This email already used")
+        return data
+>>>>>>> 896f255 (a)
 
     def save(self, commit=True):
         user = super(SingUpForm, self).save(commit=False)
