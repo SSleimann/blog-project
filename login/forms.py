@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.core.exceptions import ValidationError
+
 class LoginForm(AuthenticationForm):
     """LoginForm definition."""
     # TODO: Define form fields here

@@ -8,9 +8,25 @@
 </head>
 <body>
     
-    
-    {{usuario.first_name}}
+
+    Siguiendo:
+    {% for x in user.following.all %}
+        {{x.following_user_id}}
+    {% endfor %}
         
-        
+    Seguidores:
+    {% for x in user.followers.all %}
+        {{x.user_id}}
+    {% endfor %}
+
+    Bio: {{user.bio}}
+
+    Username : {{user.user.username}}
+
+    Posts:
+    {% for x in user.blog_posts.all %}
+        {{x.slug}}
+    {% endfor %}
+          
 </body>
 </html>
