@@ -1,0 +1,183 @@
+/*
+* @author Jorge Landaeta
+*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #FBAB7E;
+  background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+  overflow: hidden;
+}
+
+.text-focus {
+  color: #577EDB;
+}
+
+.container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+.form h1 {
+  font-weight: 700;
+}
+.form .title {
+  color: rgb(30, 30, 30);
+  font-size: 18px;
+  font-weight: bold;
+  margin: 20px auto 20px;
+}
+.form .input-group {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  position: relative;
+}
+.form .input-group span {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.form button {
+  border-radius: 4px;
+  background-color: #577EDB;
+  height: 45px;
+  padding: 12px;
+  width: 260px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin: 20px auto;
+  transition: 0.3s;
+}
+.form button:hover {
+  background-color: #3A6DD8;
+}
+.form button i {
+  font-size: 16px;
+}
+.form .buttonShadow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 90%;
+  margin: 10px auto;
+  height: 50px;
+  text-decoration: none;
+  background-color: #fff;
+  color: rgb(87, 87, 87);
+  border: 1px solid rgba(50, 50, 50, 0.1);
+}
+.form .buttonShadow:hover {
+  background-color: rgba(50, 50, 50, 0.2);
+}
+.form .link {
+  text-decoration: none;
+  color: rgb(160, 160, 160);
+  font-size: 14px;
+}
+.form .text {
+  font-size: 15px;
+  margin: 40px auto 0;
+  color: rgb(20, 20, 20);
+}
+
+.grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+.grid input[type=text],
+.grid input[type=password],
+.grid input[type=email] {
+  width: 240px;
+}
+
+.form > form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@media only screen and (max-width: 830px) {
+  .login > form {
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    overflow: auto;
+    box-shadow: none;
+  }
+}
+input[type=checkbox] {
+  margin: 10px;
+}
+
+input[type=text],
+input[type=password],
+input[type=email] {
+  width: 300px;
+  border-radius: 4px;
+  margin: 10px auto;
+  padding: 11px 10px 11px 40px;
+  background-color: rgb(238, 238, 238);
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0);
+  font-size: 15px;
+  color: rgb(30, 30, 30);
+  transition: 0.3s;
+}
+input[type=text]::-moz-placeholder, input[type=password]::-moz-placeholder, input[type=email]::-moz-placeholder {
+  color: rgb(77, 77, 77);
+}
+input[type=text]:-ms-input-placeholder, input[type=password]:-ms-input-placeholder, input[type=email]:-ms-input-placeholder {
+  color: rgb(77, 77, 77);
+}
+input[type=text]::placeholder,
+input[type=password]::placeholder,
+input[type=email]::placeholder {
+  color: rgb(77, 77, 77);
+}
+input[type=text]:hover,
+input[type=password]:hover,
+input[type=email]:hover {
+  background-color: #F1EFF1;
+}
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus {
+  background-color: #fff;
+  border: 1px solid rgb(87, 126, 219);
+  box-shadow: 0 0 4px 2px rgba(50, 50, 50, 0.1);
+}
+input[type=text]:valid,
+input[type=password]:valid,
+input[type=email]:valid {
+  border: 1px solid rgb(220, 220, 220);
+}/*# sourceMappingURL=login.css.map */

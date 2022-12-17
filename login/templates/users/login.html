@@ -7,44 +7,32 @@
     {% load static %}
 
     <!-- Personal CSS -->
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login/login.css' %}">
 
 {% endblock css %}
 
 {% block form-content %}
 
-    <h1> Bienvenido de nuevo </h1>
+<div class="form">
+    <form method="POST"> {% csrf_token %}
+        <h1 class="main-title">Blo<span class="text-focus">G</span> <i class="bx bx-tada bxs-ghost text-focus"></i></h1>
+        <p class="title"> Iniciar sesión </p>
 
-    <form method="POST">{% csrf_token %}
-        
-        <!-- form variable     
-        {{ form.as_div }} -->
+        {% for form_field in form %}
+            <div class="input-group">
+                <span>
+                    <i class="bx bxs-{{ form_field.field.icon }}"></i>
+                </span>
+                {{ form_field }}
+                {{ form_field.label }}
+            </div>  
+        {% endfor %}
 
-        <div class="control">
-            <label for="username"> Usuario </label>
-            {{ form.username }}
-            <i class="la la-user"></i>            
-        </div>
-
-        <div class="control">
-            <label for="password"> Contraseña </label>
-            {{ form.password }}
-            <i class="la la-lock"></i>
-        </div>
-
-        <div class="check-control">
-            {{ form.remember_me }}
-            <label for="remember-me"> Recuérdame </label>
-        </div>
-
-        <button class="buttonSubmit submit"> Ingresar </button>
-
-        <a href="#"> Recuperar acceso </a>
-
-        <a href="/register"> Registrarse </a>
-
-        <div class="errors">{{ form.non_field_errors }}</div>
-
+        <button class="loader"> Ingresar </button>
+        <a class="link" href="#">¿Olvidó su contraseña?</a>
+        <p class="text">¿No tienes una cuenta?</p>
+        <a href="/register" class="buttonShadow"> Registrarse </a>
     </form>
+</div>
 
 {% endblock form-content %}

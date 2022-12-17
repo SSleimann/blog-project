@@ -7,67 +7,33 @@
     {% load static %}
 
     <!-- Personal CSS -->
-    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login/register.css' %}">
 
 {% endblock css %}
 
 {% block form-content %}
 
-    <h1> Registrarse </h1>
-
+<div class="form">
     <form method="POST"> {% csrf_token %}
+        <h1 class="main-title">Blo<span class="text-focus">G</span> <i class="bx bx-tada bxs-ghost text-focus"></i></h1>
 
-        {{ form.non_field_errors }}
-        
-        <!-- FORMS -->
-        <div class="control">
-            {{ form.first_name.errors }}
-            {{ form.first_name.label }}
-            {{ form.first_name }}
-            <i class="la la-user"></i>
+        <p class="title"> Registrar una cuenta </p>
+
+        <div class="grid">
+            {% for form_field in form %}
+                <div class="input-group">
+                    <span>
+                        <i class="bx bxs-{{ form_field.field.icon }}"></i>
+                    </span>
+                    {{ form_field }}
+                </div>  
+            {% endfor %}
         </div>
 
-        <div class="control">
-            {{ form.last_name.errors }}
-            {{ form.last_name.label }}
-            {{ form.last_name }}
-            <i class="la la-id-card"></i>
-        </div>
-
-        <div class="control">
-            {{ form.username.errors }}
-            {{ form.username.label }}
-            {{ form.username }}
-            <i class="la la-user-circle"></i>
-        </div>
-
-        <div class="control">
-            {{ form.email.errors }}
-            {{ form.email.label }}
-            {{ form.email }}
-            <i class="la la-at"></i>
-        </div>
-
-        <div class="control">
-            {{ form.password1.errors }}
-            {{ form.password1.label }}
-            {{ form.password1 }}
-            <i class="la la-lock"></i>
-        </div>
-
-        <div class="control">
-            {{ form.password2.errors }}
-            {{ form.password2.label }}
-            {{ form.password2 }}
-            <i class="la la-eye"></i>
-        </div>
-        <!-- END FORMS -->
-
-        <div class="cols-2 flex">
-            <button class="buttonSubmit submit" type="submit"> Registrar </button>
-            <a href="/login"> Iniciar Sesión </a>
-        </div>
-
+        <button class="loader"> Registrar </button>
+        <p class="text">¿Ya tienes un cuenta?</p>
+        <a href="/login" class="buttonShadow"> Loguearse </a>
     </form>
+</div>
 
 {% endblock form-content %}
