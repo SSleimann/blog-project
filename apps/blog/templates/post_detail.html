@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post {{post.title}}</title>
+</head>
+<body>
+    
+    <h1>Autor: {{post.author.username}} </h1>
+    <h1>Fecha de creacion: {{post.created_data}} </h1>
+    <h1>Contenido: {{post.content}} </h1>
+    <h1>Slug: {{post.title_slug}} </h1>
+    <h1>Titulo: {{post.title}} </h1>
+
+    {% if post.author == request.user %}
+    <a href={% url 'core:blog:delete_post' post.title_slug %}>Eliminar post</a>
+    {% endif %}
+
+    <ul class="messagelist">
+        {% for message in messages %}
+            <li>{{ message.message }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

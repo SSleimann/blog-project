@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeProfile</title>
+</head>
+<body>
+    <h3> Id: {{ user.id }} </h3>
+    <h3> username: {{ user.username }} </h3>
+    <h3> first name: {{ user.first_name }} </h3>
+    <h3> last name: {{ user.last_name }} </h3>
+    <h3> email: {{ user.email }} </h3>
+    <h3> bio: {{ user.bio }} </h3>
+    <h3> last login: {{ user.last_login }} </h3>
+    <h3> date joined: {{ user.date_joined }} </h3>
+    <h3> followers: {{ user.followers.all }} </h3>
+    <h3> following: {{ user.following.all }} </h3>
+</body>
+</html>
