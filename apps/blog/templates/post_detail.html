@@ -1,12 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post {{post.title}}</title>
-</head>
-<body>
+{% extends "base/base.html" %}
+
+<!-- TITLE OF THE PAGE -->
+{% block title %} Post: {{post.title}} {% endblock title %}
+ 
+{% block css %}
+
+    {% load static %}   <!-- LOADS THE PROPER CSS -->
+    <link rel="stylesheet" href="{% static 'css/blog.min.css' %}"/>
+
+{% endblock css %}
+
+<!--
+    * THE MAIN CONTAINER TO LAYOUT THE PAGE
+-->
+{% block container %}
+
+    <!--
+    * CALLS THE NAVBAR FROM THE BASE.HTML
+    -->
+    {% block navbar %}
+        {{ block.super }}
+    {% endblock navbar %}
+
+    <!--
+    * HERE IS THE CONTENT OF THE HOME PAGE
+    * ALL NEED TO BE INSIDE .CONTENT DIV FOR CORRECT FIT 
+    -->
+    <div class="content">
+        <ul class="messagelist">
+            {% for message in messages %}
+                <li>{{ message.message }}</li>
+            {% endfor %}
+        </ul>
+
+        <div class="posts">
+
+            <div class="recent-posts">
+                
+                {% block posts %}
+                    {{ block.super }} 
+                {% endblock posts %}
+
+                {% if post.author == request.user %}
+                    <div class="delete-post">
+                        <a class="delete-button" href={% url 'core:blog:delete_post' post.title_slug %}>Eliminar post</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+{% endblock container %}
+
+<!--
     
     <h1>Autor: {{post.author.username}} </h1>
     <h1>Fecha de creacion: {{post.created_data}} </h1>
@@ -14,14 +61,4 @@
     <h1>Slug: {{post.title_slug}} </h1>
     <h1>Titulo: {{post.title}} </h1>
 
-    {% if post.author == request.user %}
-    <a href={% url 'core:blog:delete_post' post.title_slug %}>Eliminar post</a>
-    {% endif %}
-
-    <ul class="messagelist">
-        {% for message in messages %}
-            <li>{{ message.message }}</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+-->

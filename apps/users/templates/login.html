@@ -1,24 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <form method="post">
-        {% csrf_token %}
+{% extends 'base/login-base.html' %}
 
-        {{form}}
+{% block title %} Iniciar Sesión {% endblock title %}
 
-        <ul class="messagelist">
-            {% for message in messages %}
-                <li>{{ message.message }}</li>
+{% block css %}
+
+    {% load static %}
+
+    <!-- Personal CSS -->
+    <link rel="stylesheet" href="{% static 'css/login.min.css' %}">
+
+{% endblock css %}
+
+{% block form-content %}
+
+    <div class="form">
+        <form method="POST"> {% csrf_token %}
+            <h1 class="main-title">Blo<span class="text-focus">G</span> <i class="bx bx-tada bxs-ghost text-focus"></i></h1>
+            <p class="title"> Iniciar sesión </p>
+
+            {% for form_field in form %}
+                <div class="input-group">
+                    <span>
+                        <i class="bx bxs-{{ form_field.field.icon }}"></i>
+                    </span>
+                    {{ form_field }}
+                    {{ form_field.label }}
+                </div>  
             {% endfor %}
-        </ul>
+    
+            <button class="button main-button"> Ingresar </button>
+            <a class="link" href="#">¿Olvidó su contraseña?</a>
 
-        <button type="submit">subir</button>
-    </form>
-</body>
-</html>
+            <p class="text">¿No tienes una cuenta?</p>
+            <a href="/auth/register" class="buttonShadow"> Registrarse </a>
+
+            <ul class="messagelist">
+                {% for message in messages %}
+                    <li>{{ message.message }}</li>
+                {% endfor %}
+            </ul>
+        </form>
+    </div>
+
+{% endblock form-content %}

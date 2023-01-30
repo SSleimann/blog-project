@@ -1,0 +1,104 @@
+.posts {
+    margin-top: 30px;
+
+    h2 {
+        text-align: center;
+    }
+}
+
+.recent-posts {
+    display: grid;
+    width: 90%;
+    grid-template-columns: 1fr;
+    margin: 40px auto 0 auto;
+    gap: 40px;
+}
+
+.separator {
+    height: 2px;
+    width: 90%;
+    background-color: $main;
+    border-radius: 1px;
+    margin: 20px auto;
+}
+
+.card {
+    background-color: rgb(255, 255, 255);
+    color: #000;
+    border-radius: 8px;
+    border: 1px solid rgb(0, 0, 0, .3);
+    margin: 0 auto;
+    width: 100%;
+
+    .card-content {
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+        border-bottom: 1px solid rgb(0, 0, 0, .1);
+
+        .card-author {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        span {
+            opacity: .8;
+        }
+
+        strong {
+            font-weight: 600;
+        }
+    }
+
+    .name > div .admin-badge {
+        font-size: .8em;
+        padding: 4px 7px;
+        background-color: rgb(85, 73, 241, .2);
+        color: rgb(85, 73, 241);
+        border-radius: 50em;
+    }
+
+    .call-to-action {
+        display: flex;
+    }
+
+    .call-to-action > a {
+        text-decoration: none;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 55px;
+        gap: 8px;
+        cursor: pointer;
+        transition: .3s;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+
+        i {
+            font-size: 1.3em;
+            opacity: .6;
+        }
+    }
+
+    .call-to-action > a:hover {
+        background-color: rgb(0, 0, 0, .1);
+    }
+}
+
+.new-post {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .new-post-field {
+        width: 80%;
+
+        input,
+        textarea {
+            width: 100%;
+        }
+    }
+}

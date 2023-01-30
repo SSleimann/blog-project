@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %} {% endblock title %}</title>
+
+    {% load static %}
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="{% static 'icons/css/boxicons.min.css' %}"/>
+
+    {% block css %}
+
+    {% endblock css %}
+
+</head>
+<body>
+    
+    <div class="container nav-open">
+
+        {% block container %}
+
+            {% block navbar %}
+                <!--
+                    * NAVBAR
+                -->
+                <nav>
+                    <div>
+                        <div class="nav-logo">
+                            <h1 class="main-title">Blo<span class="text-focus">G</span> <i class="bx bx-tada-hover bxs-ghost text-focus"></i></h1>
+                        
+                            <button id="nav-menu-button"> <i class="bx bx-menu"></i> </button>
+                        </div>
+
+                        <ul class="nav-links">
+                            <h4> Menu </h4>
+
+                            <li>
+                                <a class="link" href="/blog/index"> Inicio </a>
+                                <i class="bx bxs-dashboard"></i>
+                            </li>
+
+                            <li>
+                                <a class="link" href="/me/profile"> Perfil </a>
+                                <i class="bx bxs-user-circle"></i>
+                            </li>
+
+                            <li>
+                                <a class="link" href="#"> Ajustes </a>
+                                <i class="bx bxs-cog"></i>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="logout">
+                        <a href="/auth/logout" class="link"><i class='bx bx-log-out-circle'></i></a>
+                    </div>
+                </nav>
+            {% endblock navbar %}
+
+            {% block content %}
+
+            {% endblock content %}
+
+            <!-- 
+            *   POSTS
+            -->
+            {% block posts %}
+                
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-author">
+                            <div>
+                                <strong>@{{ post.author.username }}</strong>
+
+                                {% if post.author.username == 'Landaeta' %}
+                                    <span class="badge blue">Admin</span>
+                                {% endif %}
+                            </div>
+
+                            <strong>{{ post.created_data }}</strong>
+                        </div>
+
+                        <div class="card-title">
+                            <h1><strong>{{ post.title }}</strong></h1>
+                        </div>
+
+                        <span>{{ post.content }}</span>
+                    </div>
+
+                    <div class="call-to-action">
+                        <a href="/me/profile">
+                            <i class='bx bxs-user-detail'></i>
+                            <span>Perfil</span>
+                        </a>
+                        <a href={% url 'core:blog:detail_post' post.title_slug %}>
+                            <i class='bx bxs-user-detail'></i>
+                            <span>ir al post</span>
+                        </a>
+                        <a>
+                            <i class='bx bxs-like'></i>
+                            <span>85.151.932</span>
+                        </a>
+
+                        <a>
+                            <i class='bx bxs-dislike'></i>
+                            <span>2</span>
+                        </a>
+                    </div>
+                </div>
+
+            {% endblock posts %}
+
+        {% endblock container %}
+
+    </div> <!-- End container -->
+
+    <!--
+        * SCRIPTS
+    -->
+    <script src="{% static 'scripts/main.js' %}"></script>
+    
+    {% block script %}
+
+    {% endblock script %}
+
+</body>
+</html>

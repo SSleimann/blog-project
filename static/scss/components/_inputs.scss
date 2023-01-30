@@ -1,0 +1,57 @@
+input[type="checkbox"] {
+    margin: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+    width: 300px;
+    border-radius: 4px;
+    margin: 10px auto;
+    padding: 11px 10px 11px 40px;
+    background-color: rgb(223, 223, 223);
+    outline: none;
+    border: 1px solid rgb(0, 0, 0, 0);
+    font-size: 15px;
+    color: rgb(30, 30, 30);
+    transition: .3s;
+
+    &::placeholder {
+        color: rgb(49, 49, 49);
+    }
+
+    &:hover {
+        background-color: #F1EFF1;
+    }
+
+    &:focus {
+        background-color: #fff;
+        border: 1px solid rgb(87, 126, 219);
+        box-shadow: 0 0 4px 2px rgb(50, 50, 50, .1);
+    }
+
+    &:valid {
+        border: 1px solid rgb(220, 220, 220);
+    }
+}
+
+textarea {
+    height: 160px;
+    resize: none;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    position: relative;
+
+    span {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}

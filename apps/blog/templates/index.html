@@ -1,34 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-    <form method="post">
-        {% csrf_token %}
-        {{form}}
+{% extends "base/base.html" %}
 
-        <button type="submit">subir</button>
-    </form>
-    
-    <ul class="messagelist">
-        {% for message in messages %}
-            <li>{{ message.message }}</li>
-        {% endfor %}
-    </ul>
+<!-- TITLE OF THE PAGE -->
+{% block title %} ¡Bienvenido, {{user.first_name}}! {% endblock title %}
+ 
+{% block css %}
 
-    {% for post in posts %}
-    <div style="border: black solid;">
-        <h1> {{post.title}} </h1>
-        <h1> {{post.author}} </h1>
-        <h1> {{post.content|truncatechars:35}} </h1>
-        <a href={% url 'core:blog:detail_post' post.title_slug %}>ir al post</a>
+    {% load static %}   <!-- LOADS THE PROPER CSS -->
+    <link rel="stylesheet" href="{% static 'css/blog.min.css' %}"/>
+
+{% endblock css %}
+
+<!--
+    * THE MAIN CONTAINER TO LAYOUT THE PAGE
+-->
+{% block container %}
+
+    <!--
+    * CALLS THE NAVBAR FROM THE BASE.HTML
+    -->
+    {% block navbar %}
+        {{ block.super }}
+    {% endblock navbar %}
+
+    <!--
+    * HERE IS THE CONTENT OF THE HOME PAGE
+    * ALL NEED TO BE INSIDE .CONTENT DIV FOR CORRECT FIT 
+    -->
+    <div class="content">
+
+        <!--
+        * FORM TO PUBLISH POSTS
+        -->
+        {% block content %}
+            <ul class="messagelist">
+                {% for message in messages %}
+                    <li>{{ message.message }}</li>
+                {% endfor %}
+            </ul>
+
+            <div class="separator"></div>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="new-post">
+                    <h2> Crear nueva publicación </h2>
+
+                    {% for form_field in form %}
+                        <div class="input-group new-post-field">
+                            <span>
+                                <i class='bx bxs-message-square-dots'></i>
+                            </span>
+                            {{ form_field }}
+                        </div>
+                    {% endfor %}
+
+                    <button class="button main-button" type="submit"> Publicar </button>
+                </div>
+            </form>
+                
+            <div class="separator"></div>
+        {% endblock content %}
+
+        <!--
+        * CALLS THE POSTS CARDS SECTION FROM THE BASE.HTML
+        * THIS NEED TO BE INSIDE THE .CONTENT DIV
+        -->
+
+        <div class="posts">
+            <h2> Publicaciones recientes </h2>
+
+            <div class="recent-posts">
+                {% for post in posts %}
+                
+                    {% block posts %}
+                        {{ block.super }} 
+                    {% endblock posts %}
+
+                {% endfor %}
+            </div>
+        </div>
+
     </div>
-    {% endfor %}
 
-</body>
-</html>
+{% endblock container %}
+
+<!--
+    
+-->
