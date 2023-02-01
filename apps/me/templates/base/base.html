@@ -39,12 +39,12 @@
                             <h4> Menu </h4>
 
                             <li>
-                                <a class="link" href="/blog/index"> Inicio </a>
+                                <a class="link" href={% url 'core:blog:index' %}> Inicio </a>
                                 <i class="bx bxs-dashboard"></i>
                             </li>
 
                             <li>
-                                <a class="link" href="/me/profile"> Perfil </a>
+                                <a class="link" href={% url 'core:me:userProfile' request.user.id %}> Perfil </a>
                                 <i class="bx bxs-user-circle"></i>
                             </li>
 
@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="logout">
-                        <a href="/auth/logout" class="link"><i class='bx bx-log-out-circle'></i></a>
+                        <a href={% url 'core:users:user_logout' %} class="link"><i class='bx bx-log-out-circle'></i></a>
                     </div>
                 </nav>
             {% endblock navbar %}
@@ -92,7 +92,7 @@
                     </div>
 
                     <div class="call-to-action">
-                        <a href="/me/profile">
+                        <a href={% url 'core:me:userProfile' post.author.id %}>
                             <i class='bx bxs-user-detail'></i>
                             <span>Perfil</span>
                         </a>

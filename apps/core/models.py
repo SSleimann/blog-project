@@ -54,7 +54,7 @@ class User(PermissionsMixin, AbstractBaseUser):
     
     email = models.EmailField(_("email address"), unique=True)
     
-    bio = models.CharField(_('biography'), max_length=250, blank=True)
+    bio = models.CharField(_('biography'), max_length=250, blank=True, default=_('hello!'))
     
     is_staff = models.BooleanField(
         _("staff status"),

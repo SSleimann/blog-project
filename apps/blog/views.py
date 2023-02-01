@@ -23,7 +23,7 @@ def index(request):
             post.author = request.user
             
             post.save()
-            
+            messages.add_message(request, messages.SUCCESS, _('Post created!'))
             return HttpResponseRedirect(reverse_lazy('core:blog:index'))
     
     return render(request, 
@@ -45,11 +45,15 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'post_delete.html'
     success_url = reverse_lazy('core:blog:index')
     
+    def delete(self, request, *args, **kwargs) :
+        super().delete(request, *args, **kwargs)
+        return messages.success(request, _('Post deleted!'))
+    
     def dispatch(self, request, *args, **kwargs):
         obj = self.get_object()
         
-        if obj.author != self.request.user:
-            messages.add_message(self.request, messages.ERROR, _('You not are the author!'))
+        if obj.author != request.user:
+            messages.add_message(request, messages.ERROR, _('You not are the author!'))
             return HttpResponseRedirect(reverse_lazy('core:blog:detail_post', kwargs={'slug': obj.title_slug} ))
         
         return super().dispatch(request, *args, **kwargs)

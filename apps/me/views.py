@@ -2,7 +2,9 @@ from django.shortcuts import get_object_or_404, HttpResponseRedirect, render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ObjectDoesNotExist
+from django.contrib import messages
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 
 from apps.core.models import Follower
 
@@ -15,8 +17,11 @@ def follow(request, id):
     if user_to_follow != current_user:
         try:
             Follower.objects.get(current_user=current_user, following_user=user_to_follow).delete()
+            messages.add_message(request, messages.SUCCESS, _('You have unfollowed @{}!'.format(user_to_follow.get_username())))
+            
         except ObjectDoesNotExist:
             Follower.objects.create(current_user=current_user, following_user=user_to_follow)
+            messages.add_message(request, messages.SUCCESS, _('You have followed @{}!'.format(user_to_follow.get_username())))
         
     return HttpResponseRedirect(reverse_lazy('core:me:userProfile', kwargs={'id': user_to_follow.id}))
 
