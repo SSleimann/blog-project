@@ -43,7 +43,7 @@
 
                 {% if post.author == request.user %}
                     <div class="delete-post">
-                        <a class="delete-button" href={% url 'core:blog:delete_post' post.title_slug %}>Eliminar post</a>
+                        <a class="delete-button" href="{% url 'core:blog:delete_post' post.title_slug %}">Eliminar post</a>
                     </div>
                 {% endif %}
             </div>
