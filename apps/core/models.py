@@ -48,9 +48,9 @@ class User(PermissionsMixin, AbstractBaseUser):
         validators=[username_validator]
     )
     
-    first_name = models.CharField(_("first name"), max_length=150, blank=True)
+    first_name = models.CharField(_("first name"), max_length=150)
     
-    last_name = models.CharField(_("last name"), max_length=150, blank=True)
+    last_name = models.CharField(_("last name"), max_length=150)
     
     email = models.EmailField(_("email address"), unique=True)
     
@@ -99,9 +99,6 @@ class User(PermissionsMixin, AbstractBaseUser):
         verbose_name_plural = _("users")
     
 class Follower(models.Model):
-    """Model definition for Follower."""
-
-    # TODO: Define fields here
     current_user = models.ForeignKey("User", verbose_name=_("current user"), on_delete=models.CASCADE, related_name='following')
     following_user = models.ForeignKey("User", verbose_name=_("following user"), on_delete=models.CASCADE, related_name='followers')
     
@@ -116,9 +113,6 @@ class Follower(models.Model):
         return f'{self.current_user} following {self.following_user}'
 
 class Post(models.Model):
-    """Model definition for Post."""
-
-    # TODO: Define fields here
     author = models.ForeignKey("User", verbose_name=_("author"), related_name='blog_posts', on_delete=models.CASCADE)
     title = models.CharField(_("title"), max_length=50)
     title_slug = models.SlugField(_("slug"), unique=True)

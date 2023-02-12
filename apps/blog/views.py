@@ -21,9 +21,10 @@ def index(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            
             post.save()
+            
             messages.add_message(request, messages.SUCCESS, _('Post created!'))
+            
             return HttpResponseRedirect(reverse_lazy('core:blog:index'))
     
     return render(request, 

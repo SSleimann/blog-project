@@ -18,7 +18,23 @@
             <li>{{ message.message }}</li>
         {% endfor %}
     </ul>
-    
+
+    {% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
+
     <div class="form">
         <form method="post">
             {% csrf_token %}
@@ -34,9 +50,9 @@
                             <i class="bx bxs-{{ form_field.field.icon }}"></i>
                         </span>
 
-                        {% if form_field.name != 'bio' %}
-                            {{ form_field }}
-                        {% endif %}
+                        
+                        {{ form_field }}
+                        
                     </div>  
                 {% endfor %}
             </div>
