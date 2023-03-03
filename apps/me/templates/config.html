@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+
+{% block title %} Perfil {% endblock title %}
+    
+{% block css %}
+
+    {% load static %}
+
+    <!-- Personal CSS -->
+    <link rel="stylesheet" href="{% static 'css/profile.min.css' %}">
+
+{% endblock css %}
+    
+{% block container %}   
+
+    {% block navbar %}
+        {{ block.super }}
+    {% endblock navbar %}
+
+    <!--
+        * CONTENT
+    -->
+    <div class="content">
+
+        <section class="config">
+            <a class="config-change-bio" href="{% url 'core:users:change_bio' %}">
+                <i class="bx bxs-user-detail"></i>
+                <span>Cambiar <br> Biografía</span>
+            </a>
+    
+            <a class="config-change-password" href="{% url 'core:users:change_password' %}">
+                <i class="bx bxs-lock"></i>
+                <span>Cambiar <br> Contraseña</span>
+            </a>
+        </section>
+
+    </div> <!-- End content section -->
+
+{% endblock container %}    
+
+{% block script %}
+{% endblock script %}

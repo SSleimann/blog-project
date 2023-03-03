@@ -39,6 +39,10 @@
                     <li>{{ message.message }}</li>
                 {% endfor %}
             </ul>
+
+            {% block form-errors %}
+                {{ block.super }}
+            {% endblock form-errors %}
         </form>
     </div>
 

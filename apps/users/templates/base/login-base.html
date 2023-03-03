@@ -21,6 +21,28 @@
     <div class="login-container">
     
         {% block form-content %}
+
+            {% block form-errors %}
+                <!-- 
+                    * ERRORS 
+                -->
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endblock form-errors %}
+
         {% endblock form-content %}
 
     </div>

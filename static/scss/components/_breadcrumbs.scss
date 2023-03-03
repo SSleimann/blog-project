@@ -1,6 +1,6 @@
 .messagelist {
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0 auto 20px;
 
     li {
         padding: 5px 0;
@@ -10,4 +10,25 @@
         text-align: center;
         border-radius: 2px;
     }
+}
+
+.alert {
+    width: 86%;
+    margin: auto;
+    height: 32px;
+    border-radius: 6px;
+    position: fixed;
+    bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    * {
+        font-size: 14px;
+        font-weight: 500;
+    }
+}
+
+.alert-danger {
+    background-color: rgb(255, 58, 58);
 }

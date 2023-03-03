@@ -94,7 +94,6 @@ nav {
             width: 100%;
             height: 40px;
             margin-bottom: 22px;
-            border-left: 6px solid transparent;
             background-color: rgb(210, 210, 210);
             border-radius: 4px;
             cursor: pointer;
@@ -107,13 +106,17 @@ nav {
             transition: all .2s;
 
             &:hover {
-                border-left: 6px solid $main;
-                background-color: $li-gray;  
+                background-color: $main;
+                box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+                i, a {
+                    color: $white;
+                }
             }
 
             i {
                 position: absolute;
-                left: 10px;
+                left: 15px;
                 top: 50%;
                 transform: translateY(-50%);
                 font-size: 24px;
@@ -170,19 +173,7 @@ nav {
             }
         }
         
-
-        .nav-links li {
-            border: none;
-
-            &:hover {
-                background-color: $main;
-                box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
-                i {
-                    color: $white;
-                }
-            }
-            
+        .nav-links li {            
             i {
                 transition: all .1s;
                 top: 50%;

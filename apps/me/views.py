@@ -40,3 +40,9 @@ def user_profile(request, id):
         return HttpResponseRedirect(reverse_lazy('core:me:meProfile'))
     
     return render(request, 'userprofile.html', context= {'user': user})
+
+@login_required
+def config(request):
+    current_user = get_object_or_404(get_user_model(), pk=request.user.pk)
+    
+    return render(request, 'config.html', context= {'user': current_user})

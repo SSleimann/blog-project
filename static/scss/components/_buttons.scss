@@ -13,6 +13,12 @@
     cursor: pointer;
     margin: 20px auto;
     transition: .3s;
+    text-decoration: none;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .main-button {
@@ -39,7 +45,6 @@
 */
 .delete-button {
     text-decoration: none;
-    height: 45px;
     padding: 12px 24px;
     font-size: 14px;
     font-weight: 400;
@@ -47,4 +52,38 @@
     color: $white;
     font-size: 16px;
     border-radius: 4px;
+}
+
+.follow-button {
+    text-decoration: none;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: $main;
+    color: $white;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: all .2s;
+
+    &:hover {
+        background-color: $main-hover;
+    }
+
+    &:active {
+        background-color: $main-active;
+    }
+}
+
+.edit-bio-button {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+
+    i {
+        color: $main;
+    }
 }

@@ -1,38 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base/base.html' %}
+
+{% block title %} Perfil {% endblock title %}
     
-    {% if form.errors %}
-        {% for field in form %}
-            {% for error in field.errors %}
-                <div class="alert alert-danger">
-                    <strong>{{ error|escape }}</strong>
-                </div>
-            {% endfor %}
-        {% endfor %}
+{% block css %}
 
-        {% for error in form.non_field_errors %}
-            <div class="alert alert-danger">
-                <strong>{{ error|escape }}</strong>
-            </div>
-        {% endfor %}
-    {% endif %}
+    {% load static %}
 
-    <form method="post">{% csrf_token %}
+    <!-- Personal CSS -->
+    <link rel="stylesheet" href="{% static 'css/blog.min.css' %}">
+
+{% endblock css %}
+    
+{% block container %}   
+
+    {% block navbar %}
+        {{ block.super }}
+    {% endblock navbar %}
+    
+    <div class="content">
         
-        {% for form_field in form %}
-            {{form_field}}
-            {{form_field.label}}
-        {% endfor %}
-            
+        {% block form-errors %}
+            {{ block.super }}
+        {% endblock form-errors %}
 
-        <button type="submit">subir</button>
-    </form>
-</body>
-</html>
+        <form method="post">{% csrf_token %}
+
+            <div class="new-post">
+                <h2> Actualizar mi biografía </h2>
+            
+                {% for form_field in form %}
+                    <div class="input-group new-post-field">
+                        {{form_field}}
+                    </div>
+                {% endfor %}
+
+                <button class="button main-button" type="submit">Actualizar</button>
+            </div>
+                
+        </form>
+    </div>
+
+{% endblock container %}    
+
+{% block script %}
+{% endblock script %}

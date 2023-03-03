@@ -1,13 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
-</head>
-<body>
+{% extends 'base/base.html' %}
+
+{% block title %} Perfil {% endblock title %}
     
+{% block css %}
+
+    {% load static %}
+
+    <!-- Personal CSS -->
+    <link rel="stylesheet" href="{% static 'css/profile.min.css' %}">
+
+{% endblock css %}
+    
+{% block container %}   
+
+    {% block navbar %}
+        {{ block.super }}
+    {% endblock navbar %}
+
+    <!--
+        * PROFILE CONTENT
+    -->
+    <div class="content">
+
+        <ul class="messagelist">
+            {% for message in messages %}
+                <li>{{ message.message }}</li>
+            {% endfor %}
+        </ul>
+
+        <div class="content-profile">
+            <div>
+                <img src="{% static 'img/user.svg' %}" alt="USER_IMAGE" class="profile-img">
+            </div>
+
+            <div class="profile-info">
+                <h1> <span class="text-focus">@</span>{{user.username}} </h1>
+                <h4> {{user.first_name}} {{user.last_name}} </h4>
+
+                <i class="bx bxs-quote-left"></i>
+
+                <p> {{user.bio}} </p>
+            </div>
+        </div>
+
+        <div class="follow">
+            <a class="button follow-button" href="{% url 'core:me:follow' user.id %}">Seguir</a>
+        </div>
+
+        <div class="profile-stats">
+            <div> 
+                <h3>Publicaciones</h3> 
+                <h2>{{ user.blog_posts.all.count }}</h2> 
+            </div>
+
+            <div> 
+                <h3>Siguiendo</h3>  
+                <h2>{{ user.following.count }}</h2> 
+            </div>
+
+            <div> 
+                <h3>Seguidores</h3> 
+                <h2>{{ user.followers.count }}</h2> 
+            </div>
+        </div>
+
+        <!--
+            * POSTS
+        -->
+        <div class="posts">
+
+            <h2> Publicaciones recientes </h2>
+            <div class="separator"></div>
+
+            <div class="recent-posts">
+    
+                {% block posts %}
+                    {% for post in user.blog_posts.all %}
+
+                        {{ block.super }}                     
+                    
+                    {% endfor %}
+                {% endblock posts %}
+            
+            </div>
+
+        </div> <!-- End Recent Posts -->    
+        
+    </div> <!-- End content section -->
+
+{% endblock container %}    
+
+
+{% block script %}
+
+{% endblock script %}
+    
+<!--
     <h3> Id: {{ user.id }} </h3>
     <h3> username: {{ user.username }} </h3>
     <h3> first name: {{ user.first_name }} </h3>
@@ -21,5 +109,4 @@
     
     <h1>FOLLOW</h1>
     <a href="{% url 'core:me:follow' user.id %}">Follow </a>
-</body>
-</html>
+-->

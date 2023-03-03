@@ -5,9 +5,9 @@ from .userRecoveryForms import UserSetPasswordForm
 class UserUpdateBiographyForm(forms.Form):
     biography = forms.CharField(
                                 required=True,
-                                label=_('Biography'), 
+                                label=_('Nueva Biografía'), 
                                 max_length=250, 
-                                widget=forms.Textarea(attrs={'placeholder': 'Biografia'})
+                                widget=forms.Textarea(attrs={'placeholder': 'I\'m a beautiful butterfly!'})
                                 )
     
     def __init__(self, *args, **kwargs):

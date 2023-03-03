@@ -16,6 +16,7 @@ textarea {
     font-size: 15px;
     color: rgb(30, 30, 30);
     transition: .3s;
+    position: relative;
 
     &::placeholder {
         color: rgb(49, 49, 49);
@@ -53,5 +54,7 @@ textarea {
         left: 15px;
         top: 50%;
         transform: translateY(-50%);
+
+        z-index: 100;
     }
 }
