@@ -1,4 +1,4 @@
-# **B**log project
+# Blog project
 
 This project is a small social network where you can follow other users, post and view other users' posts.
 
@@ -49,3 +49,14 @@ python manage.py migrate
 ```shell
 python manage.py runserver
 ```
+
+## Visuals
+![login](.github/images/login.png)
+![index](.github/images/index.png)
+![profile](.github/images/profile.png)
+![post](.github/images/post.png)
+![cofig](.github/images/config.png)
+
+## License
+
+Distributed under the MIT License. See [LICENSE.md](LICENSE.md) for more information.
