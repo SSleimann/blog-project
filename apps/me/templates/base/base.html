@@ -96,10 +96,6 @@
                         <div class="card-author">
                             <div>
                                 <strong>@{{ post.author.username }}</strong>
-
-                                {% if post.author.username == 'Landaeta' %}
-                                    <span class="badge blue">Admin</span>
-                                {% endif %}
                             </div>
 
                             <strong>{{ post.created_data }}</strong>
@@ -120,15 +116,6 @@
                         <a href="{% url 'core:blog:detail_post' post.title_slug %}">
                             <i class='bx bxs-user-detail'></i>
                             <span>ir al post</span>
-                        </a>
-                        <a>
-                            <i class='bx bxs-like'></i>
-                            <span>85.151.932</span>
-                        </a>
-
-                        <a>
-                            <i class='bx bxs-dislike'></i>
-                            <span>2</span>
                         </a>
                     </div>
                 </div>
