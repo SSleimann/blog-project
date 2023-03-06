@@ -51,6 +51,7 @@ python manage.py runserver
 ```
 
 ## Visuals
+
 ![login](.github/images/login.png)
 ![index](.github/images/index.png)
 ![profile](.github/images/profile.png)
